@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alpha Trading Academy — Formation Trading</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14213B;
+    --cream:#F6F3EC;
+    --gold:#B8862E;
+    --teal:#1F5C52;
+    --teal-dark:#153F38;
+    --burgundy:#6E2A2A;
+    --burgundy-dark:#4E1D1D;
+    --line: rgba(20,33,59,0.14);
+    --white:#FFFDF9;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    margin:0;
+    color:var(--ink);
+    font-weight:600;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+
+  /* Header */
+  header{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:28px 0;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-size:1.35rem;
+    font-weight:700;
+    letter-spacing:0.2px;
+  }
+  .brand span{color:var(--gold);}
+  nav a{
+    text-decoration:none;
+    font-size:0.95rem;
+    color:var(--ink);
+    margin-left:28px;
+  }
+
+  /* Hero */
+  .hero{
+    padding:64px 0 72px;
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:48px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem, 4vw, 3.1rem);
+    line-height:1.12;
+    max-width:15ch;
+  }
+  .hero p.lead{
+    margin-top:20px;
+    max-width:48ch;
+    font-size:1.08rem;
+    color:#3B4A63;
+  }
+  .hero-cta{
+    margin-top:32px;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 24px;
+    border-radius:6px;
+    font-weight:600;
+    font-size:0.98rem;
+    text-decoration:none;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-teal{background:var(--teal); color:var(--white);}
+  .btn-teal:hover{background:var(--teal-dark);}
+  .btn-burgundy{background:var(--burgundy); color:var(--white);}
+  .btn-burgundy:hover{background:var(--burgundy-dark);}
+  .btn-outline{background:transparent;border-color:var(--ink);color:var(--ink);}
+
+  /* Hero chart illustration */
+  .hero-art{
+    background:var(--ink);
+    border-radius:10px;
+    padding:28px;
+    min-height:260px;
+    display:flex;
+    align-items:flex-end;
+  }
+  .hero-art svg{width:100%;height:auto;display:block;}
+
+  /* Tier section */
+  .tiers{
+    padding:56px 0 72px;
+    border-top:1px solid var(--line);
+  }
+  .tiers-head{max-width:52ch;margin-bottom:36px;}
+  .tiers-head h2{font-size:1.9rem;}
+  .tiers-head p{color:#3B4A63;margin-top:12px;}
+
+  .tier-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+  }
+  .tier-card{
+    border-radius:8px;
+    padding:32px;
+    position:relative;
+    overflow:hidden;
+  }
+  .tier-free{
+    background:var(--white);
+    border:1px solid var(--line);
+  }
+  .tier-paid{
+    background:var(--ink);
+    color:var(--white);
+  }
+  .tier-paid h3, .tier-paid .stat-label{color:var(--white);}
+  .tier-eyebrow{
+    font-size:0.85rem;
+    font-weight:600;
+    color:var(--teal-dark);
+    margin-bottom:6px;
+  }
+  .tier-paid .tier-eyebrow{color:#D9B76A;}
+  .tier-card h3{font-size:1.4rem;margin-bottom:14px;}
+  .lock-row{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin:20px 0 18px;
+  }
+  .lock-row svg{width:34px;height:34px;flex-shrink:0;}
+  .stat-num{
+    font-family:'Fraunces', serif;
+    font-size:2.4rem;
+    font-weight:700;
+    line-height:1;
+  }
+  .tier-free .stat-num{color:var(--teal-dark);}
+  .tier-paid .stat-num{color:#D9B76A;}
+  .stat-label{
+    font-size:0.85rem;
+    color:#5A6A85;
+    margin-top:2px;
+  }
+  .tier-card ul{
+    list-style:none;
+    padding:0;
+    margin:20px 0 26px;
+  }
+  .tier-card li{
+    padding:8px 0;
+    border-top:1px solid var(--line);
+    font-size:0.95rem;
+  }
+  .tier-paid li{border-top:1px solid rgba(255,255,255,0.14);}
+  .tier-card li:first-child{border-top:none;}
+
+  .disclaimer-note{
+    font-size:0.8rem;
+    color:#5A6A85;
+    margin-top:14px;
+  }
+  .tier-paid .disclaimer-note{color:#A9B4C9;}
+
+  /* Form */
+  .signup{
+    padding:64px 0 80px;
+    border-top:1px solid var(--line);
+  }
+  .signup-inner{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:40px;
+    max-width:640px;
+    margin:0 auto;
+  }
+  .signup-inner h2{font-size:1.7rem;text-align:center;}
+  .signup-inner > p{
+    text-align:center;
+    color:#3B4A63;
+    margin-top:10px;
+    margin-bottom:28px;
+  }
+  form{display:grid;gap:18px;}
+  .field label{
+    display:block;
+    font-size:0.88rem;
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .field input, .field select{
+    width:100%;
+    padding:12px 14px;
+    border:1px solid var(--line);
+    border-radius:6px;
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:0.98rem;
+    background:var(--cream);
+  }
+  .field input:focus, .field select:focus{
+    outline:2px solid var(--teal);
+    outline-offset:1px;
+  }
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .submit-btn{
+    margin-top:8px;
+    width:100%;
+    justify-content:center;
+    padding:15px;
+    font-size:1rem;
+  }
+  .form-status{
+    text-align:center;
+    font-size:0.92rem;
+    margin-top:14px;
+    min-height:1.2em;
+  }
+  .form-status.ok{color:var(--teal-dark);}
+  .form-status.err{color:var(--burgundy);}
+
+  footer{
+    padding:28px 0 40px;
+    border-top:1px solid var(--line);
+  }
+  .risk-warning{
+    font-size:0.78rem;
+    color:#5A6A85;
+    max-width:70ch;
+    line-height:1.6;
+  }
+
+  @media (max-width:760px){
+    .hero{grid-template-columns:1fr;}
+    .tier-grid{grid-template-columns:1fr;}
+    .row2{grid-template-columns:1fr;}
+    nav{display:none;}
+    .signup-inner{padding:28px 22px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="brand">Alpha <span>Trading</span> Academy</div>
+    <nav>
+      <a href="#tiers">Formations</a>
+      <a href="#signup">Inscription</a>
+    </nav>
+  </header>
+</div>
+
+<div class="wrap">
+  <section class="hero">
+    <div>
+      <h1>Apprends à lire le marché avant d'y placer ton argent.</h1>
+      <p class="lead">Deux parcours, un seul objectif : te donner une méthode de trading claire, testée et adaptée aux débutants comme aux confirmés.</p>
+      <div class="hero-cta">
+        <a href="#tiers" class="btn btn-teal">Voir les formations</a>
+        <a href="#signup" class="btn btn-outline">S'inscrire directement</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="10,150 50,120 90,135 130,80 170,95 210,50 250,65 310,20"
+          stroke="#D9B76A" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="310" cy="20" r="5" fill="#D9B76A"/>
+        <line x1="10" y1="160" x2="310" y2="160" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+      </svg>
+    </div>
+  </section>
+</div>
+
+<div class="wrap">
+  <section class="tiers" id="tiers">
+    <div class="tiers-head">
+      <h2>Choisis ton niveau d'accès</h2>
+      <p>Commence gratuitement, puis débloque l'accompagnement complet quand tu es prêt à aller plus loin.</p>
+    </div>
+    <div class="tier-grid">
+
+      <div class="tier-card tier-free">
+        <div class="tier-eyebrow">Accès libre</div>
+        <h3>Formation Gratuite</h3>
+        <div class="lock-row">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="11" width="14" height="9" rx="2" stroke="#1F5C52" stroke-width="1.8"/>
+            <path d="M8 11V7a4 4 0 0 1 7.2-2.4" stroke="#1F5C52" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <div class="stat-num">89%</div>
+            <div class="stat-label">taux de réussite déclaré des participants*</div>
+          </div>
+        </div>
+        <ul>
+          <li>Les bases de l'analyse technique</li>
+          <li>Accès à la communauté débutants</li>
+          <li>3 modules vidéo + support PDF</li>
+        </ul>
+        <a href="#signup" class="btn btn-teal" style="width:100%;justify-content:center;">Rejoindre gratuitement</a>
+        <p class="disclaimer-note">*Chiffre à remplacer par une donnée vérifiable avant mise en ligne.</p>
+      </div>
+
+      <div class="tier-card tier-paid">
+        <div class="tier-eyebrow">Accompagnement complet</div>
+        <h3>Formation Payante</h3>
+        <div class="lock-row">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="11" width="14" height="9" rx="2" stroke="#D9B76A" stroke-width="1.8"/>
+            <path d="M8 11V7a4 4 0 0 1 8 0v4" stroke="#D9B76A" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <div class="stat-num">95%</div>
+            <div class="stat-label">taux de réussite déclaré des participants*</div>
+          </div>
+        </div>
+        <ul>
+          <li>Stratégies avancées + gestion du risque</li>
+          <li>Suivi individuel avec un mentor</li>
+          <li>Accès à vie aux mises à jour du programme</li>
+        </ul>
+        <a href="#signup" class="btn btn-burgundy" style="width:100%;justify-content:center;background:#D9B76A;color:#14213B;">Débloquer l'accès complet</a>
+        <p class="disclaimer-note">*Chiffre à remplacer par une donnée vérifiable avant mise en ligne.</p>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<div class="wrap">
+  <section class="signup" id="signup">
+    <div class="signup-inner">
+      <h2>Réserve ta place</h2>
+      <p>Remplis le formulaire, on te recontacte avec les prochaines étapes.</p>
+      <form id="signupForm">
+        <div class="field">
+          <label for="fullname">Nom complet</label>
+          <input type="text" id="fullname" name="fullname" required>
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label for="email">Adresse e-mail</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="field">
+            <label for="phone">Numéro de téléphone</label>
+            <input type="tel" id="phone" name="phone" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="language">Langue préférée</label>
+          <select id="language" name="language" required>
+            <option value="" disabled selected>Choisir une langue</option>
+            <option value="mg">Malagasy</option>
+            <option value="fr">Français</option>
+            <option value="en">Anglais</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-teal submit-btn">S'inscrire</button>
+        <div id="formStatus" class="form-status"></div>
+      </form>
+    </div>
+  </section>
+</div>
+
+<div class="wrap">
+  <footer>
+    <p class="risk-warning">Le trading comporte des risques de perte en capital. Les performances passées ne garantissent pas les résultats futurs. Cette formation a un but pédagogique et ne constitue pas un conseil en investissement.</p>
+  </footer>
+</div>
+
+<script>
+  // ⚠️ Remplace cette URL par l'endpoint de ton propre backend/service d'inscription.
+  const SIGNUP_ENDPOINT = "https://ton-backend.example.com/api/inscriptions";
+
+  const form = document.getElementById('signupForm');
+  const status = document.getElementById('formStatus');
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    status.textContent = "Envoi en cours…";
+    status.className = "form-status";
+
+    const payload = {
+      fullname: document.getElementById('fullname').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      phone: document.getElementById('phone').value.trim(),
+      language: document.getElementById('language').value
+    };
+
+    try {
+      const res = await fetch(SIGNUP_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if(!res.ok) throw new Error('Réponse serveur invalide');
+      status.textContent = "Inscription envoyée ! On te recontacte bientôt.";
+      status.className = "form-status ok";
+      form.reset();
+    } catch(err){
+      status.textContent = "Impossible d'envoyer le formulaire pour le moment. Réessaie plus tard.";
+      status.className = "form-status err";
+    }
+  });
+</script>
+
+</body>
+</html>
